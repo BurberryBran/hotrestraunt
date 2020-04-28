@@ -37,7 +37,18 @@ app.get("/reserve", function(req, res) {
 	res.sendFile(path.join(__dirname, "../../reserve.html"));
 });
 
-for(var i = 0; i < reserveArray.length; i++)
+app.post("/api/reservation", function(req, res){
+	if(reserveArray.length < 5) { 
+		reserveArray.push(req.body);
+		res.json(req.body);
+		} else {
+		waitingArray.push(req.body);
+		res.json(req.body);
+		};
+});
+
+
+
 
 app.listen(PORT, function() {
 	console.log("App listening on PORT " + PORT);
