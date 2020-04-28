@@ -40,11 +40,12 @@ app.get("/reserve", function(req, res) {
 app.post("/api/reservation", function(req, res){
 	if(reserveArray.length < 5) { 
 		reserveArray.push(req.body);
-		res.json(req.body);
+		res.json(true);
 		} else {
 		waitingArray.push(req.body);
-		res.json(req.body);
-		};
+		res.json(false);
+	};
+	console.log(req.body)
 });
 
 
